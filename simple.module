@@ -1,3 +1,9 @@
+ <?php
+
+ /**
+ * Implements hook_user_view ()
+ */
+
 function simple_user_view($account, $build_mode) {
   $roles = $account->roles;
   $list = array();
@@ -19,5 +25,4 @@ function simple_user_view($account, $build_mode) {
         '#attributes' => array('class' => array('content-creation')),
         );
   }
-
-}
+ }
