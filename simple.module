@@ -1,0 +1,23 @@
+function simple_user_view($account, $build_mode) {
+  $roles = $account->roles;
+  $list = array();
+
+  if (!empty($roles)) {
+    foreach ($roles as $role) {
+      if ($role <> "authenticated user") {
+          $list[$role] = $role;
+      } 
+    }   
+      $variables = array(
+        'items' => $list,
+        );
+      $content = theme('item_list', $variables);
+      $account->content['summary']['output'] = array(
+        '#type' => 'user_profile_item',
+        '#title' => t('Roles Assigned'),
+        '#markup' => $content,
+        '#attributes' => array('class' => array('content-creation')),
+        );
+  }
+
+}
